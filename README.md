@@ -13,7 +13,7 @@ Next, click '+Virtual Machine' to add your Ethereum virtual machine and configur
 - VirtualNetwork and Subnet should be preconfigured. Leave the IP address as public 
 - Click on “Artifacts” to add the required Ethereum components 
 
-Then connect to the virtual machine:
+## Connect to the Virtual Machine
 
 - Select “Go-Ethereum-Homestead” 
 - In the blade that appears, enter the username you created earlier into the Admin User Account field 
@@ -26,6 +26,8 @@ Then connect to the virtual machine via SSH:
 - In the DevTest Lab blade, click through to the VM you want to connect to
 - - Note the auto-start and auto-shutdown tile. You can opt-in to have your VMs automatically shutdown out of hours ensuring they don’t incur unnecessary costs 
 - Capture the public IP address of the VM so we can connect to it over SSH.
+
+## Deploy the DApp
 
 Open a connection and log in with the credentials you used, i.e. sharonl@ethnode2438421.eastus.cloudapp.azure.com
 
