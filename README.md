@@ -1,42 +1,75 @@
 # ETB Ethereum ToDo List
 
-## Getting Started
+## Activating on Azure
 
-Prerequisite:
-* Node v8.9.0, NPM v 4.0.5
-* Truffle: `npm install -g truffle`
-* Ethereumjs testrpc: `npm install -g ethereumjs-testrpc`
-* (optional, for dev) nodemon: `npm install -g nodemon`
+After activating your Azure account, search for DevTest Labs. Enter a name and location (closest to you) and deploy.
 
-Launching the app:
-* Open a terminal and start an Ethereum local testnet with the `testrpc` command
-* Open another terminal and Install npm dependencies with `npm install`
-* In the other terminal or a new one, start the app: `npm start`, then visit `localhost:3000` in your browser
+Next, click '+Virtual Machine' to add your Ethereum virtual machine and configuration:
 
-## Development
+- Select “Ubuntu Server 14.04 LTS” as the base image 
+- Give the machine a name, i.e. EthNode1 
+- Provide a username and password 
+- Set a machine size eg Standard_D2_v2 
+- VirtualNetwork and Subnet should be preconfigured. Leave the IP address as public 
+- Click on “Artifacts” to add the required Ethereum components 
 
-For developing, you need to launch a local testnet and install npm dependencies like
-explained in the `Getting Started` section. However, for starting the app itself it is
-a little bit different if you want to take advantage of watchers:
-* In a terminal, run `npm run dev-back` to start the node server. It is started with nodemon
-  which will reload the server everytime a file changes
-* In another terminal, run `npm run dev` to start the webpack watcher. It will rebuild `bundle.js` everytime a source file is changed.
+Then connect to the virtual machine:
 
-The web application lives in the `app` folder. There is a single index.html
-file that is loaded when the application starts, and all the front-end code lives
-is bundled in the `app/dist/bundle.js` file. The source files for the front are
-in the `app/js` folder.
+- Select “Go-Ethereum-Homestead” 
+- In the blade that appears, enter the username you created earlier into the Admin User Account field 
+- Click Add on the artefact configuration (username) blade 
+- Click OK on the “Add artifacts” blade 
+- Click Create on the “Virtual Machine” blade which will now have 1 artifact selected
 
-The smart contract that is used to power the app is `ToDo.sol`, in the `/contracts`
-folder. Everytime you change something to the smart contract, you need to re-deploy
-the latest version of your contract to your local testnet with the following 
-command: `truffle migrate --reset`, and reload the frontend by pressing F5. 
-Sometime it is not enough and you also need to delete the outdated contract artifacts with the command `rm -rf build`. 
+Then connect to the virtual machine via SSH:
 
-In any case, the front-end is always in sync with the contract address that is referenced in `build/contracts/ToDo.json` (you need to run `truffle migrate` before you
-can see an address in this file).
+- In the DevTest Lab blade, click through to the VM you want to connect to
+- - Note the auto-start and auto-shutdown tile. You can opt-in to have your VMs automatically shutdown out of hours ensuring they don’t incur unnecessary costs 
+- Capture the public IP address of the VM so we can connect to it over SSH.
 
-## Links
+Open a connection and log in with the credentials you used, i.e. sharonl@ethnode2438421.eastus.cloudapp.azure.com
+
+Git clone this repository and navigate to the directory.
+
+Download https://nodejs.org/en/
+
+Install Truffle
+
+``
+npm install –g truffle
+``
+
+Install Ethereum Testrpc
+
+``
+npm install –g ethereumjs-testrpc
+``
+
+If you don't have Node v8.9.0 or NPM v4.0.5​
+
+Download https://nodejs.org/en/​
+
+Open terminal and start 
+
+``
+$ testrpc
+``
+
+Open another terminal and run
+
+``
+$ npm install
+``
+
+Start the app with 
+
+``
+$ npm start
+``
+
+Navigate to 'localhost:3000' to see your app!
+
+## Credits
 * Eat The Blocks [website](https://eattheblocks.com)
 * Eat The Blocks [YouTube Channel](https://www.youtube.com/channel/UCZM8XQjNOyG2ElPpEUtNasA)
 * Truffle framework [website](http://truffleframework.com)
